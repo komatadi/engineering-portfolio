@@ -42,8 +42,6 @@ The deployment platform varies by experiment. The architecture principles and en
 | [Personal Finance Data Platform](case-studies/personal-finance.md) | Deterministic ingestion, immutable source evidence, reconciliation, idempotency, household RLS, SwiftUI + Python + Supabase architecture |
 | [AI-Assisted Store Operations](case-studies/store-operations.md) | Shopify Apps, Supabase-backed workflows, AI-assisted catalog operations, app proxy/API boundaries, deployment guards and operational discipline |
 
-For a question-by-question view of technical depth, see the [Technical Evidence Map](evidence/technical-evidence-map.md).
-
 ## How I work
 
 My normal pattern is:
@@ -77,12 +75,6 @@ The implementation repositories behind these case studies remain private. This p
 - implementation details that would unnecessarily expose reusable IP.
 
 The purpose is to demonstrate **technical reasoning and engineering depth**, not to distribute private code.
-
-## Broader leadership context
-
-The hands-on work documented here sits alongside long-term experience in enterprise architecture and technology leadership: global commerce and omnichannel platforms, ERP transformation, architecture governance, engineering teams, vendor ecosystems and large-scale operating-model change.
-
-The combination I bring is therefore not “architecture or engineering.” It is the ability to move between **strategy, architecture and implementation detail** and know when each level matters.
 
 ---
 
