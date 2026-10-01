@@ -20,14 +20,27 @@ My goal is not to position myself as a full-time individual-contributor software
 - **Engineering governance** — CI gates, migrations, verification contracts, architecture decisions and documentation as an engineering asset.
 - **AI-assisted engineering** — using modern coding agents and LLM tooling to accelerate implementation while retaining ownership of architecture, contracts, review, testing and acceptance.
 
+## Technology footprint
+
+Across these GenAI and platform experiments, I have worked with a practical stack spanning:
+
+- **OpenAI** — models, embeddings, Agents SDK / agent orchestration and **OpenAI ChatKit** for conversational experiences;
+- **Shopify Apps** — embedded applications, Admin GraphQL, App Proxy endpoints, Theme App Extensions and commerce integrations;
+- **Supabase** — PostgreSQL, Auth, Storage, Edge Functions, vector search / embeddings and Row Level Security;
+- **Application engineering** — Next.js, React, TypeScript, Python, SwiftUI, REST APIs and external tool integrations;
+- **Hosting & deployment** — **Hostinger** as part of my broader hosted GenAI experimentation, alongside project-specific use of Vercel and Render;
+- **Engineering workflow** — GitHub, GitHub Actions, migrations, automated verification, CI/CD and AI-assisted development tooling.
+
+The deployment platform varies by experiment. The architecture principles and engineering ownership remain consistent across them.
+
 ## Selected case studies
 
 | Case study | What it demonstrates |
 |---|---|
-| [Agentic Commerce & Catalog Intelligence](case-studies/agentic-commerce.md) | Multi-agent design, RAG, embeddings, intent routing, structured outputs, orchestration, external integrations and cost/latency trade-offs |
+| [Agentic Commerce & Catalog Intelligence](case-studies/agentic-commerce.md) | OpenAI ChatKit, multi-agent design, RAG, embeddings, intent routing, structured outputs, orchestration, external integrations and cost/latency trade-offs |
 | [Group Games Platform](case-studies/group-games.md) | Platform vs. game boundaries, shared runtime, identity/authorization, Supabase RLS, CI, architecture decisions and evolutionary refactoring |
 | [Personal Finance Data Platform](case-studies/personal-finance.md) | Deterministic ingestion, immutable source evidence, reconciliation, idempotency, household RLS, SwiftUI + Python + Supabase architecture |
-| [AI-Assisted Store Operations](case-studies/store-operations.md) | Shopify platform integration, AI-assisted catalog workflows, app proxy/API boundaries, deployment guards and operational discipline |
+| [AI-Assisted Store Operations](case-studies/store-operations.md) | Shopify Apps, Supabase-backed workflows, AI-assisted catalog operations, app proxy/API boundaries, deployment guards and operational discipline |
 
 For a question-by-question view of technical depth, see the [Technical Evidence Map](evidence/technical-evidence-map.md).
 
