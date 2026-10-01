@@ -2,7 +2,7 @@
 
 ## Context
 
-A commerce assistant needed to move beyond generic conversational responses and become grounded in real product and service data. The problem required more than connecting an LLM to a chat UI: it needed intent recognition, deterministic retrieval, semantic search, tool execution, session context, structured outputs, operational limits and integrations with business services.
+A commerce assistant needed to move beyond generic conversational responses and become grounded in real product and service data. The problem required more than connecting an LLM to a chat UI: it needed a conversational surface, intent recognition, deterministic retrieval, semantic search, tool execution, session context, structured outputs, operational limits and integrations with business services.
 
 The underlying implementation was developed through private repositories. This case study deliberately describes the architecture and engineering decisions without publishing proprietary source code.
 
@@ -10,7 +10,8 @@ The underlying implementation was developed through private repositories. This c
 
 ```mermaid
 flowchart LR
-    U[User / Chat UI] --> O[Agent Orchestrator]
+    U[User] --> UI[OpenAI ChatKit / Conversational UI]
+    UI --> O[Agent Orchestrator]
     O --> I[Intent & Routing]
     I --> C[Catalog Intelligence]
     I --> S[Customer Service RAG]
@@ -27,9 +28,15 @@ flowchart LR
     B --> M[Calendar / External API]
     B --> Q[(Operational Data)]
 
-    O --> L[LLM]
+    O --> L[OpenAI Models]
     O --> T[Telemetry / Limits / Error Handling]
 ```
+
+## Conversational experience
+
+**OpenAI ChatKit** was used as part of the conversational application layer, with agent responses adapted for both human-readable text and structured product/widget data.
+
+That separation matters because the UI contract is different from the model contract: the model may reason over tools and retrieved context, while the conversational layer needs stable response shapes, streaming behavior and structured data that can be rendered reliably.
 
 ## Key engineering decisions
 
@@ -96,29 +103,33 @@ Prompts, instructions, intent synonyms and tool playbooks are externalized so be
 ```mermaid
 sequenceDiagram
     participant U as User
+    participant UI as ChatKit
     participant A as Agent
     participant R as Retrieval
     participant V as Vector Store
-    participant L as LLM
+    participant L as OpenAI Model
 
-    U->>A: Ask policy / product question
+    U->>UI: Ask policy / product question
+    UI->>A: Conversation input
     A->>R: Normalize intent/query
     R->>V: Semantic / hybrid search
     V-->>R: Ranked grounded context
     R-->>A: Context + metadata
     A->>L: Prompt + grounded evidence
     L-->>A: Structured response
-    A-->>U: Answer + relevant result
+    A-->>UI: Text + structured data
+    UI-->>U: Render response / results
 ```
 
 ## Technologies used
 
 Representative technologies across the implementation:
 
+- **OpenAI ChatKit**
+- OpenAI models, Agents tooling and embeddings
 - Python and TypeScript
 - LangChain / agent orchestration
-- OpenAI models and embeddings
-- Supabase / PostgreSQL / vector search
+- **Supabase / PostgreSQL / vector search**
 - Pydantic / typed response contracts
 - Next.js / React
 - Microsoft Graph API for calendar integration
@@ -166,4 +177,4 @@ A larger enterprise deployment would add or strengthen:
 
 The relevant skill is not memorizing framework APIs.
 
-It is understanding how LLMs, retrieval, state, tools, enterprise data, APIs, validation and operational controls fit together — and being able to move between an architecture diagram and the behavior of the individual components.
+It is understanding how the conversational experience, LLMs, retrieval, state, tools, enterprise data, APIs, validation and operational controls fit together — and being able to move between an architecture diagram and the behavior of the individual components.
